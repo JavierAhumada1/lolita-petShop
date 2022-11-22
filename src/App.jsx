@@ -1,34 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PetShopLayout from './Layouts/PetShopLayout';
+import AddProductPage from './Pages/AddProductPage';
+import CartPage from './Pages/CartPage';
+import EditProductPage from './Pages/EditProductPage';
+import ErrorPage from './Pages/ErrorPage';
+import FoodPage from './Pages/FoodPage';
+import HomePage from './Pages/HomePage';
+import LoginPage from './Pages/LoginPage';
+import MyAccountPage from './Pages/MyAccountPage';
+import MyOrderPage from './Pages/MyOrderPage';
+import SignupPage from './Pages/SignupPage';
+import VerificationPage from './Pages/VerificationPage';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+        <BrowserRouter>
+          <PetShopLayout>
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/alimento-para-mascotas' element={<FoodPage />} />
+              <Route path='/editar-producto/:id' element={<EditProductPage />} />
+              <Route path='/agregar-producto/:id' element={<AddProductPage />} />
+              <Route path='/carrito' element={<CartPage />} />
+              <Route path='/logueo' element={<LoginPage />} />
+              <Route path='/registro' element={<SignupPage />} />
+              <Route path='/mi-cuenta' element={<MyAccountPage />} />
+              <Route path='/orden/:id' element={<MyOrderPage />} />
+              <Route path='/verificacion' element={<VerificationPage />} />
+              <Route path='/error' element={<ErrorPage />} />
+            </Routes>
+          </PetShopLayout>
+        </BrowserRouter>
+  );
 }
-
-export default App
