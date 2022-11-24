@@ -14,12 +14,12 @@ module.exports = {
         'nunito-sans': ['"Nunito Sans"', 'sans-serif']
       }
     },
-    colors: {
+    colors:{
       'orange':'#ED6436',
       'green': '#65C178',
-      'light-grey': '#F2F2F4',
+      'light-grey' : '#F2F2F4',
       'black': '#181818',
-      'dark-grey': '#777777',
+      'dark-grey' : '#777777',
       'white': '#fff',
     }
   },
