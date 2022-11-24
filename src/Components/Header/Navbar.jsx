@@ -55,7 +55,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
     return (
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="font-nunito bg-gray-800">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -72,7 +72,7 @@ export default function Navbar() {
                                 </Disclosure.Button>
                             </div>
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                                <div className="flex flex-shrink-0 items-center">
+                                {/* <div className="flex flex-shrink-0 items-center">
                                     <img
                                         className="block h-8 w-auto lg:hidden"
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
@@ -83,7 +83,7 @@ export default function Navbar() {
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                                         alt="Your Company"
                                     />
-                                </div>
+                                </div> */}
 
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
