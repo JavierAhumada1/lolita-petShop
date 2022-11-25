@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PetShopLayout from './Layouts/PetShopLayout';
 import AddProductPage from './Pages/AddProductPage';
 import CartPage from './Pages/CartPage';
+import Contact from './Pages/Contact';
 import EditProductPage from './Pages/EditProductPage';
 import ErrorPage from './Pages/ErrorPage';
 import FoodPage from './Pages/FoodPage';
@@ -28,6 +29,7 @@ export default function App() {
               <Route path='/orden/:id' element={<MyOrderPage />} />
               <Route path='/verificacion' element={<VerificationPage />} />
               <Route path='/error' element={<ErrorPage />} />
+              <Route path='/contacto' element={<Contact />} />
             </Routes>
           </PetShopLayout>
         </BrowserRouter>
