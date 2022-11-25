@@ -1,15 +1,16 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Fragment } from 'react';
-import { Bars3Icon, BellIcon, XMarkIcon,  } from '@heroicons/react/24/outline';
+import { Bars3Icon, BellIcon, XMarkIcon, } from '@heroicons/react/24/outline';
 import { Link as Linkrouter } from 'react-router-dom';
 import ProductsCategories from './ProductsCategories';
 import { HiUser } from "react-icons/hi";
+import { IoCartOutline } from "react-icons/io5"
 
 const navigation = [
     {
         name: 'Inicio',
-        href:'/',
+        href: '/',
         current: false
     },
     /* {
@@ -26,7 +27,7 @@ const navigation = [
     }, */
     {
         name: 'Contacto',
-        href: '#',
+        href: '/contacto',
         current: false
     },
 ]
@@ -88,9 +89,9 @@ export default function Navbar() {
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <div
+                                            <Linkrouter
                                                 key={item.name}
-                                                href={item.href}
+                                                to={item.href}
                                                 className={classNames(
                                                     item.current ? 'bg-gray-900 text-white' : 'text-white hover:bg-gray-700 hover:text-orange',
                                                     'px-2 py-2 rounded-md text-sm font-medium'
@@ -98,20 +99,25 @@ export default function Navbar() {
                                                 aria-current={item.current ? 'page' : undefined}
                                             >
                                                 {item.name}
-                                            </div>
+                                            </Linkrouter>
                                         ))}
                                     </div>
                                 </div>
                             </div>
+                            {/* <Linkrouter className='text-white align-baseline px-3 hover:text-orange' to={'/'} >Inicio</Linkrouter> */}
                             <ProductsCategories animals='Perros' />
                             <ProductsCategories animals='Gatos' />
+                            {/* <Linkrouter className='text-white align-baseline px-3 hover:text-orange' to={'/contacto'} >Contacto</Linkrouter> */}
+                            <Linkrouter to={'/carrito'}>
+                                <IoCartOutline className='w-6 h-6 text-white hover:text-orange cursor-pointer' />
+                            </Linkrouter>
                             <div className="absolute inset-y-5 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-2 right-1 left-2">
                                 {/* Profile dropdown */}
                                 <Menu as="div" className="relative ml-3">
                                     <div>
                                         <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                             <span className="sr-only">Open user menu</span>
-                                            <HiUser className='bg-white rounded-full w-6 h-6'/>
+                                            <HiUser className='bg-white rounded-full w-6 h-6' />
                                         </Menu.Button>
                                     </div>
                                     <Transition
