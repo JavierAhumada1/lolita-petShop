@@ -9,7 +9,7 @@ import { HiUser } from "react-icons/hi";
 const navigation = [
     {
         name: 'Inicio',
-        href: '#',
+        href:'/',
         current: false
     },
     /* {

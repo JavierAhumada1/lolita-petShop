@@ -8,9 +8,9 @@ export default function Header() {
                 <div className='flex py-1 px-36 justify-between'>
                     <div className='my-auto header-help font-nunito font-light text-[0.8rem]'>
                         <Linkrouter className='hover:text-white' href="">Preguntas Frecuentes</Linkrouter >
-                        <span className='text-light'> | </span>
+                        <span className='text-white'> | </span>
                         <Linkrouter className='hover:text-white' href="">Ayuda</Linkrouter >
-                        <span className='text-light'> | </span>
+                        <span className='text-white'> | </span>
                         <Linkrouter className='hover:text-white' href="">Soporte</Linkrouter >
                     </div>
                     <div className='header-social'>
@@ -25,7 +25,7 @@ export default function Header() {
             </div>
             <div className='bg-black flex justify-between text-light px-24'>
                 <div className='my-auto px-12'>
-                    <Linkrouter href="" className='font-nunito text-[1.5rem] font-bold'><h2 className='text-white'><span className='text-orange'>Lola</span>PetShop</h2></Linkrouter>
+                    <Linkrouter to="/" className='font-nunito text-[1.5rem] font-bold'><h2 className='text-white'><span className='text-orange'>Lola</span>PetShop</h2></Linkrouter>
                 </div>
                 <Navbar />
             </div>
