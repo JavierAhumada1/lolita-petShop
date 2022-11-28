@@ -1,7 +1,7 @@
 export default function FoodProducts() {
     return (
         <>
-            <div>Alimento para mascotas</div>
+            <h2>Alimento para mascotas</h2>
         </>
     )
 }
