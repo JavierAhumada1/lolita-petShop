@@ -1,5 +1,5 @@
 import Brands from '../Components/MainHome/Brands'
-import FeaturedProducts from '../Components/MainHome/Featured Products'
+import FeaturedProducts from '../Components/MainHome/FeaturedProducts'
 import StepsPurchase from '../Components/MainHome/StepsPurchase'
 import Welcome from '../Components/MainHome/Welcome'
 

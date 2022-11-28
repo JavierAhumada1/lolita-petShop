@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PetShopLayout from './Layouts/PetShopLayout';
+import AccessoriesPage from './Pages/AccessoriesPage';
 import AddProductPage from './Pages/AddProductPage';
 import CartPage from './Pages/CartPage';
 import Contact from './Pages/Contact';
@@ -20,6 +21,7 @@ export default function App() {
             <Routes>
               <Route path='/' element={<HomePage />} />
               <Route path='/alimento-para-mascotas' element={<FoodPage />} />
+              <Route path='/accesorios-para-mascotas' element={<AccessoriesPage />} />
               <Route path='/editar-producto/:id' element={<EditProductPage />} />
               <Route path='/agregar-producto/:id' element={<AddProductPage />} />
               <Route path='/carrito' element={<CartPage />} />

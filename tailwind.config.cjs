@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'welcome-img': "url('../public/lola-welcome.jpg')"
+        'welcome-img': "url('/lola-welcome.jpg')"
       },
       fontFamily: {
         'nunito': ['Nunito', 'sans-serif'],

@@ -1,4 +1,4 @@
-import FoodProducts from '../Components/FoodProducts'
+import FoodProducts from '../Components/Products/FoodProducts'
 
 export default function FoodPage() {
     return (
