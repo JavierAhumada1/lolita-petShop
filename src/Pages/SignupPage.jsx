@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AlertForm from "../Components/AlertForm/AlertForm";
 import imageBg from "/pexels-mq-huang-6782551.jpg";
 
 export default function SignupPage() {
@@ -6,16 +7,33 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepatPassword] = useState("");
+  const [alert, setAlert] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if ([email, password, name, repeatPassword].includes("")) {
-      return console.log("Completa todos los campos");
+        setAlert({
+            msg: "Completa todos los campos",
+            error: true
+        })
+        return
     }
 
-    if(password !== repeatPassword) return console.log('Las password no son iguales')
-    if(password.length < 6) return console.log('El password es muy corto, agrega minimo 6 caracteres')
-    
+    if(password !== repeatPassword){
+        setAlert({
+            msg: "Los password no son iguales",
+            error: true
+        })
+        return
+    }
+    if(password.length < 6) {
+        setAlert({
+            msg: "El password es muy corto, agrega minimo 6 caracteres",
+            error: true
+        })
+        return
+    }
+
     const data = {
         name,
         email,
@@ -23,7 +41,14 @@ export default function SignupPage() {
         repeatPassword
     };
     console.log(data);
+    setAlert({
+        msg: "Registrado",
+        error: false
+    })
   };
+
+  const {msg} = alert
+
   return (
     <div className="min-h-[70vh] flex flex-col justify-center items-center font-nunito gap-5">
       <h2 className="text-4xl flex font-nunito-sans">Regístrate</h2>
@@ -32,7 +57,7 @@ export default function SignupPage() {
           <img src={imageBg} className="rounded-l-sm" alt="cats eating" />
         </div>
         <form
-          className="w-[20rem] h-[28rem] flex flex-col bg-green justify-evenly items-center rounded-sm shadow-2xl"
+          className="w-[22rem] h-[28rem] flex flex-col bg-green justify-evenly items-center rounded-sm shadow-2xl"
           onSubmit={handleSubmit}
         >
           <div className="flex gap-1 flex-col w-3/4">
@@ -87,6 +112,7 @@ export default function SignupPage() {
               Ingresa
             </button>
           </div>
+            {msg ? <AlertForm alert={alert}/> : null}
         </form>
       </div>
     </div>
