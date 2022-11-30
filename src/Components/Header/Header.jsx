@@ -3,8 +3,8 @@ import Navbar from './Navbar';
 
 export default function Header() {
     return (
-        <>
-            <div className='bg-green '>
+        <div className='h-[10vh]'>
+            <div className='bg-green'>
                 <div className='flex py-1 px-36 justify-between'>
                     <div className='my-auto header-help font-nunito font-light text-[0.8rem]'>
                         <Linkrouter className='hover:text-white' href="">Preguntas Frecuentes</Linkrouter >
@@ -29,7 +29,7 @@ export default function Header() {
                 </div>
                 <Navbar />
             </div>
-        </>
+        </div>
 
     );
 }
