@@ -1,22 +1,32 @@
 import { useState } from "react";
+import AlertForm from "../Components/AlertForm/AlertForm";
 import imageBg from "/pexels-mq-huang-6782551.jpg";
 
 export default function LoginPage() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [alert, setAlert] = useState({});
+
 
     const handleSubmit = e => {
         e.preventDefault()
         if([email, password].includes('')){
-            return console.log('Completa todos los campos')
+            setAlert({
+              msg: "Completa todos los campos",
+              error: true
+            })
+            return
         }
         const data = {
             email,
             password
         }
         console.log(data);
+        setAlert({})
     }
+
+    const {msg} = alert
 
   return (
     <div className="min-h-[70vh] flex flex-col justify-center items-center font-nunito gap-5">
@@ -63,6 +73,7 @@ export default function LoginPage() {
               Ingresa
             </button>
           </div>
+          {msg ? <AlertForm alert={alert}/> : null}
         </form>
       </div>
     </div>

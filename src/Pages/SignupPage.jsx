@@ -41,10 +41,7 @@ export default function SignupPage() {
         repeatPassword
     };
     console.log(data);
-    setAlert({
-        msg: "Registrado",
-        error: false
-    })
+    setAlert({})
   };
 
   const {msg} = alert
