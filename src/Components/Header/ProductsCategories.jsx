@@ -5,6 +5,11 @@ import { Link as Linkrouter } from 'react-router-dom';
 
 const brands = [
     {
+        name: 'Todos los productos',
+        href: '#',
+        current: false,
+    },
+    {
         name: 'Royal',
         href: '#',
         current: false,
@@ -19,13 +24,38 @@ const brands = [
         href: '#',
         current: false,
     },
+    {
+        name: 'Eukanuba',
+        href: '#',
+        current: false,
+    },
+    {
+        name: 'Pedigree',
+        href: '#',
+        current: false,
+    },
+    {
+        name: 'Vital',
+        href: '#',
+        current: false,
+    },
+    {
+        name: 'Old Prince',
+        href: '#',
+        current: false,
+    },
+    {
+        name: '',
+        href: '#',
+        current: false,
+    },
 ]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function ProductsCategories({animals}) {
+export default function ProductsCategories({ animals }) {
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
@@ -45,113 +75,22 @@ export default function ProductsCategories({animals}) {
             >
                 <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Linkrouter
-                                    href="#"
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700','hover:bg-orange',
-                                        'block px-4 py-2 text-sm'
-                                    )}
-                                >
-                                    Todos los productos
-                                </Linkrouter>
-                            )}
-                        </Menu.Item>
                         {brands.map(brand =>
                         (
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Linkrouter
-                                    href="#"
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700','hover:bg-orange',
-                                        'block px-4 py-2 text-sm'
-                                    )}
-                                >
-                                    {brand.name}
-                                </Linkrouter>
-                            )}
-                        </Menu.Item>)
+                            <Menu.Item key={brand.name}>
+                                {({ active }) => (
+                                    <Linkrouter 
+                                        href="#"
+                                        className={classNames( 
+                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'hover:bg-orange',
+                                            'block px-4 py-2 text-sm'
+                                        )}
+                                    >
+                                        {brand.name}
+                                    </Linkrouter>
+                                )}
+                            </Menu.Item>)
                         )}
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Linkrouter
-                                    href="#"
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700','hover:bg-orange',
-                                        'block px-4 py-2 text-sm'
-                                    )}
-                                >
-                                    Purina
-                                </Linkrouter>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Linkrouter
-                                    href="#"
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700','hover:bg-orange',
-                                        'block px-4 py-2 text-sm'
-                                    )}
-                                >
-                                    Eukanuba
-                                </Linkrouter>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Linkrouter
-                                    href="#"
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700','hover:bg-orange',
-                                        'block px-4 py-2 text-sm'
-                                    )}
-                                >
-                                    Pedigree
-                                </Linkrouter>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Linkrouter
-                                    href="#"
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700','hover:bg-orange',
-                                        'block px-4 py-2 text-sm'
-                                    )}
-                                >
-                                    Vital
-                                </Linkrouter>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Linkrouter
-                                    href="#"
-                                    className={classNames(
-                                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700','hover:bg-orange',
-                                        'block px-4 py-2 text-sm'
-                                    )}
-                                >
-                                    Old Prince
-                                </Linkrouter>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <Linkrouter
-                                    href="#"
-                                    className={classNames(
-                                        active ? 'bg-gray-900 text-gray-900' : 'text-gray-700', 'hover:bg-orange',
-                                        'block px-4 py-2 text-sm'
-                                    )}
-                                >
-                                    Royal
-                                </Linkrouter>
-                            )}
-                        </Menu.Item>
                     </div>
                 </Menu.Items>
             </Transition>
