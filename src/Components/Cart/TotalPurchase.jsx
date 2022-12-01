@@ -18,12 +18,12 @@ export default function TotalPurchase() {
                                 {areaList.map(area => (<option className="" key={area.id} value={area.name}>{area.name}</option>))}
                             </select>
                         </label>
-                        <label className="flex flex-col">Dirección
+                        {/* <label className="flex flex-col">Dirección
                             <input className="border-b-2 border-light-grey" type="text" placeholder="ej: Santa Fe 3456 7 A" name="address" />
                         </label>
                         <label className="flex flex-col">Teléfono
                             <input className="border-b-2 border-light-grey" type="text" placeholder="ej: 1157770000" name="tel" />
-                        </label>
+                        </label> */}
                     </form>
                 </div>
                 <div className="flex flex-col gap-3 px-4 py-5">
@@ -31,12 +31,12 @@ export default function TotalPurchase() {
                         <p>Subtotal</p>
                         <p>$ 1000</p>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between font-extrabold">
                         <p>Envío</p>
                         <p>$ 200</p>
                     </div>
-                    <div className="flex justify-between">
-                        <p className="font-extrabold">TOTAL</p>
+                    <div className="flex justify-between text-lg font-black">
+                        <p>TOTAL</p>
                         <p>$ 1200</p>
                     </div>
                 </div>
