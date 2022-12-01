@@ -6,7 +6,7 @@ import { Link as Linkrouter } from 'react-router-dom';
 const brands = [
     {
         name: 'Todos los productos',
-        href: '#',
+        href: '/alimento-para-perros',
         current: false,
     },
     {
@@ -80,12 +80,11 @@ export default function ProductsCategories({ animals }) {
                             <Menu.Item key={brand.name}>
                                 {({ active }) => (
                                     <Linkrouter 
-                                        href="#"
+                                        to={brand.href}
                                         className={classNames( 
                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'hover:bg-orange',
                                             'block px-4 py-2 text-sm'
-                                        )}
-                                    >
+                                        )}>
                                         {brand.name}
                                     </Linkrouter>
                                 )}

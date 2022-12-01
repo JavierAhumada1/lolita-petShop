@@ -6,7 +6,8 @@ import CartPage from './Pages/CartPage';
 import Contact from './Pages/Contact';
 import EditProductPage from './Pages/EditProductPage';
 import ErrorPage from './Pages/ErrorPage';
-import FoodPage from './Pages/FoodPage';
+import DogsPage from './Pages/DogsPage';
+import CatsPage from './Pages/CatsPage';
 import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
 import MyAccountPage from './Pages/MyAccountPage';
@@ -20,7 +21,8 @@ export default function App() {
           <PetShopLayout>
             <Routes>
               <Route path='/' element={<HomePage />} />
-              <Route path='/alimento-para-mascotas' element={<FoodPage />} />
+              <Route path='/alimento-para-perros' element={<DogsPage />} />
+              <Route path='/alimento-para-gatos' element={<CatsPage />} />
               <Route path='/accesorios-para-mascotas' element={<AccessoriesPage />} />
               <Route path='/editar-producto/:id' element={<EditProductPage />} />
               <Route path='/agregar-producto' element={<AddProductPage />} />

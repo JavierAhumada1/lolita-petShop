@@ -1,6 +1,6 @@
 import FoodProducts from '../Components/Products/FoodProducts'
 
-export default function FoodPage() {
+export default function DogsPage() {
     return (
         <>
             <FoodProducts />
