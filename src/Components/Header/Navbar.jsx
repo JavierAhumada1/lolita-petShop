@@ -104,10 +104,8 @@ export default function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                            {/* <Linkrouter className='text-white align-baseline px-3 hover:text-orange' to={'/'} >Inicio</Linkrouter> */}
                             <ProductsCategories animals='Perros' />
                             <ProductsCategories animals='Gatos' />
-                            {/* <Linkrouter className='text-white align-baseline px-3 hover:text-orange' to={'/contacto'} >Contacto</Linkrouter> */}
                             <Linkrouter to={'/carrito'}>
                                 <IoCartOutline className='w-6 h-6 text-white hover:text-orange cursor-pointer' />
                             </Linkrouter>

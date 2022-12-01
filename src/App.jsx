@@ -13,6 +13,7 @@ import MyAccountPage from './Pages/MyAccountPage';
 import MyOrderPage from './Pages/MyOrderPage';
 import SignupPage from './Pages/SignupPage';
 import VerificationPage from './Pages/VerificationPage';
+import FaqsPage from './Pages/FaqsPage';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
               <Route path='/verificacion' element={<VerificationPage />} />
               <Route path='/error' element={<ErrorPage />} />
               <Route path='/contacto' element={<Contact />} />
+              <Route path='/preguntas-frecuentes' element={<FaqsPage />} />
             </Routes>
           </PetShopLayout>
         </BrowserRouter>
