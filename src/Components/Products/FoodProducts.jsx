@@ -1,10 +1,21 @@
 import CardProduct from "../CardsProducts/CardProduct";
 
 export default function FoodProducts() {
+    const foodList = [
+        {id: 1, type: "Alimento para perros", brand: "Royal Canin", name: "Mini Adulto", price: 9830, weight: 7.5, img: "https://puppis.vteximg.com.br/arquivos/ids/190298-1000-1000/156177.jpg?v=638028354661430000"},
+        {id: 2, type: "Alimento para gatos", brand: "Royal Canin", name: "Gato Indoor", price: 10528, weight: 7.5, img: "https://arcarosario.com/wp-content/uploads/2022/11/RC-Indoor-01.jpg"},
+        {id: 3, type: "Alimento para perros", brand: "Royal Canin", name: "Mini Adulto", price: 9830, weight: 7.5, img: "https://puppis.vteximg.com.br/arquivos/ids/190298-1000-1000/156177.jpg?v=638028354661430000"},
+        {id: 4, type: "Alimento para gatos", brand: "Royal Canin", name: "Gato Indoor", price: 10528, weight: 7.5, img: "https://arcarosario.com/wp-content/uploads/2022/11/RC-Indoor-01.jpg"}
+    ]
     
     return (
         <>
-            
+            <main className="min-h-[70vh] font-nunito flex flex-col items-center">
+                <h2 className="text-2xl font-bold py-5">Alimento para perros</h2>
+                <div className="w-4/5 flex justify-center flex-wrap pt-10 gap-10">
+                    {foodList.map(product => <CardProduct product={product} />)}
+                </div>
+            </main>
         </>
     )
 }
