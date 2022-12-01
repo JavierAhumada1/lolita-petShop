@@ -133,7 +133,7 @@ export default function Navbar() {
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <Linkrouter
-                                                        href="#"
+                                                        to="/mi-cuenta"
                                                         className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                     >
                                                         Perfil
