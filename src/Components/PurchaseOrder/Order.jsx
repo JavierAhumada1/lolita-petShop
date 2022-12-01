@@ -22,7 +22,7 @@ const Order = ({order, setShowMore}) => {
         <p>2022-10-13</p>
         <button
           onClick={() => handleClick(id)}
-          className="flex bg-black rounded-lg p-2 justify-center items-center gap-2 cursor-pointer"
+          className="flex bg-black rounded-lg p-2 justify-center items-center gap-2 cursor-pointer hover:bg-dark-grey"
         >
           Ver mas
           <BsClipboard />

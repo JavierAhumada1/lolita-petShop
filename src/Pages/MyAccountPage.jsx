@@ -1,6 +1,7 @@
+import {Link as Linkrouter} from 'react-router-dom';
+import { useEffect, useState } from "react";
 import avatarImage from "/fff0263a-8f19-4b74-8f3d-fc24b9561a96.svg";
 import Order from "../Components/PurchaseOrder/Order";
-import { useEffect, useState } from "react";
 import OrderProducts from "../Components/PurchaseOrder/OrderProducts";
 
 const data = [
@@ -83,9 +84,11 @@ export default function MyAccountPage() {
               <span className="text-dark-grey">{`esquina holanda frente de un kiosco chino 24hs`}</span>
             </p>
           </div>
-          <button className="bg-black text-white px-12 rounded-md py-2 hover:bg-dark-grey">
+          <Linkrouter 
+            to="/editar-datos"
+            className="bg-black text-white px-12 rounded-md py-2 hover:bg-dark-grey">
             Actualizar datos
-          </button>
+          </Linkrouter>
         </div>
       </div>
       <div className="w-full flex">

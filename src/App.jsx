@@ -5,6 +5,7 @@ import AddProductPage from './Pages/AddProductPage';
 import CartPage from './Pages/CartPage';
 import Contact from './Pages/Contact';
 import EditProductPage from './Pages/EditProductPage';
+import EditUserData from './Pages/EditUserData';
 import ErrorPage from './Pages/ErrorPage';
 import FoodPage from './Pages/FoodPage';
 import HomePage from './Pages/HomePage';
@@ -32,6 +33,7 @@ export default function App() {
               <Route path='/verificacion' element={<VerificationPage />} />
               <Route path='/error' element={<ErrorPage />} />
               <Route path='/contacto' element={<Contact />} />
+              <Route path='/editar-datos' element={<EditUserData />} />
             </Routes>
           </PetShopLayout>
         </BrowserRouter>

@@ -12,7 +12,7 @@ export default function Footer() {
     };
     return (
         <>
-            <div className='bg-orange text-white flex justify-around py-4 h-[20vh]'>
+            <div className='bg-orange text-white flex justify-around py-4 min-h-[20vh]'>
                 <div className='flex'>
                     <img src="" alt="logo" />
                 </div>
