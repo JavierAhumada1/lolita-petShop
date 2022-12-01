@@ -1,7 +1,13 @@
 import React from "react";
 import { BsClipboard } from "react-icons/bs";
 
-const Order = () => {
+const Order = ({order, setShowMore}) => {
+  const { id, orderDate, orderDescription, quantity, price } = order;
+
+  const handleClick = orderId => {
+    setShowMore(true)
+    console.log(orderId)
+  }
   return (
     <div className="bg-orange text-white flex w-[25rem] h-[7rem] justify-between items-center rounded-lg p-2">
       <div className="flex flex-col justify-around h-full">
@@ -14,10 +20,13 @@ const Order = () => {
       </div>
       <div className="flex flex-col justify-around h-full">
         <p>2022-10-13</p>
-        <p className="flex bg-black rounded-lg p-2 justify-center items-center gap-2 cursor-pointer">
+        <button
+          onClick={() => handleClick(id)}
+          className="flex bg-black rounded-lg p-2 justify-center items-center gap-2 cursor-pointer"
+        >
           Ver mas
           <BsClipboard />
-        </p>
+        </button>
       </div>
     </div>
   );
