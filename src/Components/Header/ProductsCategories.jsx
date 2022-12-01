@@ -6,7 +6,7 @@ import { Link as Linkrouter } from 'react-router-dom';
 const brands = [
     {
         name: 'Todos los productos',
-        href: '#',
+        href: '/alimento-para-perros',
         current: false,
     },
     {
@@ -59,7 +59,7 @@ export default function ProductsCategories({ animals }) {
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
-                <Menu.Button className="hover:text-orange inline-flex w-full justify-center text-white px-3 py-1 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                <Menu.Button className="hover:text-orange inline-flex w-full justify-center text-white px-3 py-1 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                     {animals}
                     <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                 </Menu.Button>
@@ -80,12 +80,11 @@ export default function ProductsCategories({ animals }) {
                             <Menu.Item key={brand.name}>
                                 {({ active }) => (
                                     <Linkrouter 
-                                        href="#"
+                                        to={brand.href}
                                         className={classNames( 
                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'hover:bg-orange',
                                             'block px-4 py-2 text-sm'
-                                        )}
-                                    >
+                                        )}>
                                         {brand.name}
                                     </Linkrouter>
                                 )}

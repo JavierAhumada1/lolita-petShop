@@ -94,7 +94,7 @@ export default function Navbar() {
                                                 to={item.href}
                                                 className={classNames(
                                                     item.current ? 'bg-gray-900 text-white' : 'text-white hover:bg-gray-700 hover:text-orange',
-                                                    'px-2 py-2 rounded-md text-sm font-medium'
+                                                    'px-2 py-2 rounded-md text-base font-medium'
                                                 )}
                                                 aria-current={item.current ? 'page' : undefined}
                                             >
@@ -115,7 +115,7 @@ export default function Navbar() {
                                 {/* Profile dropdown */}
                                 <Menu as="div" className="relative ml-3">
                                     <div>
-                                        <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                        <Menu.Button className="flex rounded-full bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                             <span className="sr-only">Open user menu</span>
                                             <HiUser className='bg-white rounded-full w-6 h-6' />
                                         </Menu.Button>
@@ -134,7 +134,7 @@ export default function Navbar() {
                                                 {({ active }) => (
                                                     <Linkrouter
                                                         href="#"
-                                                        className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                        className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-base text-gray-700')}
                                                     >
                                                         Perfil
                                                     </Linkrouter>
@@ -144,7 +144,7 @@ export default function Navbar() {
                                                 {({ active }) => (
                                                     <Linkrouter
                                                         href="#"
-                                                        className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                        className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-base text-gray-700')}
                                                     >
                                                         Configuración
                                                     </Linkrouter>
@@ -154,7 +154,7 @@ export default function Navbar() {
                                                 {({ active }) => (
                                                     <Linkrouter
                                                         href="#"
-                                                        className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                        className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-base text-gray-700')}
                                                     >
                                                         Cerrar Sesión
                                                     </Linkrouter>
