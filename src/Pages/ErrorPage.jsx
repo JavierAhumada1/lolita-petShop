@@ -29,10 +29,3 @@ export default function ErrorPage() {
         </>
     )
 }
-{/* <div>
-            <div>
-                <p>ERROR 404</p>
-                <p>Ups!!! Algo salió mal y no encontramos lo que buscas. . .</p>
-            </div>
-            <LinkRouter to='/alimento-para-perros'>Productos</LinkRouter>
-        </div> */}

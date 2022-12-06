@@ -8,7 +8,10 @@ module.exports = {
     extend: {
       backgroundImage: {
         'welcome-img': "url('./lola-welcome.jpg')",
-        'contact-img': "url('./cat-contact.png')"
+        'contact-img': "url('./cat-contact.png')",
+        'verify-img' : "url('./cat-verify.jpg')",
+        'verify-img2' : "url('./cat-verify2.jpg')",
+        'verify-img3' : "url('./cat-ultima.png')"
       },
       fontFamily: {
         'nunito': ['Nunito', 'sans-serif'],
