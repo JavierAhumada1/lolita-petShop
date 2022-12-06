@@ -55,6 +55,10 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+
+
+    const login = false
+
     return (
         <Disclosure as="nav" className="font-nunito bg-gray-800">
             {({ open }) => (
@@ -127,7 +131,10 @@ export default function Navbar() {
                                         leaveFrom="transform opacity-100 scale-100"
                                         leaveTo="transform opacity-0 scale-95"
                                     >
-                                        <Menu.Items className="absolute right-0 z-10 mt-2 w-46 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none">
+                                        {
+                                            login
+                                            ?
+                                            <Menu.Items className="absolute right-0 z-10 mt-2 w-46 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none">
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <Linkrouter
@@ -159,6 +166,31 @@ export default function Navbar() {
                                                 )}
                                             </Menu.Item>
                                         </Menu.Items>
+                                        :
+                                        <Menu.Items className="absolute right-0 z-10 mt-2 w-46 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none">
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <Linkrouter
+                                                        to="/registrarse"
+                                                        className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    >
+                                                        Registrate
+                                                    </Linkrouter>
+                                                )}
+                                            </Menu.Item>
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <Linkrouter
+                                                        to="/iniciar-sesion"
+                                                        className={classNames(active ? 'bg-orange' : '', 'block px-4 py-2 text-base text-gray-700')}
+                                                    >
+                                                        Inicia Sesión
+                                                    </Linkrouter>
+                                                )}
+                                            </Menu.Item>
+                                        </Menu.Items>
+                                        }
+                                        
                                     </Transition>
                                 </Menu>
                             </div>

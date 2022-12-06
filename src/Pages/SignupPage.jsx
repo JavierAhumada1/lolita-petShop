@@ -1,8 +1,10 @@
 import { useState } from "react";
 import AlertForm from "../Components/AlertForm/AlertForm";
 import imageBg from "/pexels-mq-huang-6782551.jpg";
+import { useGetPostNewUserMutation } from "../features/user/userAPI";
 
 export default function SignupPage() {
+  const [ createUser] = useGetPostNewUserMutation()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,25 +14,16 @@ export default function SignupPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if ([email, password, name, repeatPassword].includes("")) {
-        setAlert({
-            msg: "Completa todos los campos",
-            error: true
-        })
+        setAlert({msg: "Completa todos los campos", error: true})
         return
     }
 
     if(password !== repeatPassword){
-        setAlert({
-            msg: "Los password no son iguales",
-            error: true
-        })
+        setAlert({msg: "Los password no son iguales", error: true})
         return
     }
     if(password.length < 6) {
-        setAlert({
-            msg: "El password es muy corto, agrega minimo 6 caracteres",
-            error: true
-        })
+        setAlert({msg: "El password es muy corto, agrega minimo 6 caracteres", error: true})
         return
     }
 
@@ -40,9 +33,22 @@ export default function SignupPage() {
         password,
         repeatPassword
     };
-    console.log(data);
+    sendUser(data)
     setAlert({})
   };
+
+  const sendUser = async(dataUser) => {
+    try {
+      const data = await createUser(dataUser);
+      if(data.data){
+        setAlert({msg: data.data?.msg, error: false});
+      }else {
+        setAlert({msg: `${data.error.data.msg}`, error: true});
+      }
+    } catch(error){
+      console.log(error)
+    }
+  }
 
   const {msg} = alert
 
