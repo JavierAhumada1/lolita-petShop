@@ -33,7 +33,7 @@ export default function App() {
               <Route path='/registrarse' element={<SignupPage />} />
               <Route path='/mi-cuenta' element={<MyAccountPage />} />
               <Route path='/orden/:id' element={<MyOrderPage />} />
-              <Route path='/verificacion' element={<VerificationPage />} />
+              <Route path='/verificacion/:id' element={<VerificationPage />} />
               <Route path='/error' element={<ErrorPage />} />
               <Route path='/contacto' element={<Contact />} />
               <Route path='/editar-datos' element={<EditUserData />} />
