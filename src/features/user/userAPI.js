@@ -12,10 +12,25 @@ export const userAPI = createApi({
                 body: newUser,
             }),
             invalidatesTags: ['postNewUser'],
+        }),
+        getConfirmUser: builder.mutation({
+            query: (token) => ({
+                url: `/user/confirm/${token}`,
+                method: 'GET',
+            })
+        }),
+        getUserLogin: builder.mutation({
+            query: (dataUser) => ({
+                url: `/user/login`,
+                method: 'POST',
+                body: dataUser,
+            })
         })
     })
 })
 
 export const {
     useGetPostNewUserMutation,
+    useGetConfirmUserMutation,
+    useGetUserLoginMutation
 } = userAPI
