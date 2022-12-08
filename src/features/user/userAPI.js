@@ -30,6 +30,14 @@ export const userAPI = createApi({
                 method: 'GET',
                 headers: {Authorization: 'Bearer ' + tokenLs}
             })
+        }),
+        updateUserData: builder.mutation({
+            query: (newDataUser) => ({
+                url: `/user/perfil/${newDataUser._id}`,
+                method: 'PUT',
+                body: newDataUser,
+                headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}
+            })
         })
     })
 })
@@ -38,5 +46,6 @@ export const {
     useGetPostNewUserMutation,
     useGetConfirmUserMutation,
     useGetUserLoginMutation,
-    useGetUserLocalStorageMutation
+    useGetUserLocalStorageMutation,
+    useUpdateUserDataMutation
 } = userAPI
