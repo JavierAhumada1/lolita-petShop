@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useGetUserLocalStorageMutation } from './features/user/userAPI';
+import { useDispatch } from 'react-redux';
 import PetShopLayout from './Layouts/PetShopLayout';
 import AccessoriesPage from './Pages/AccessoriesPage';
 import AddProductPage from './Pages/AddProductPage';
@@ -16,8 +19,35 @@ import MyOrderPage from './Pages/MyOrderPage';
 import SignupPage from './Pages/SignupPage';
 import VerificationPage from './Pages/VerificationPage';
 import FaqsPage from './Pages/FaqsPage';
+import { addUser } from './features/user/userSlice';
 
 export default function App() {
+
+  const [authUser] = useGetUserLocalStorageMutation()
+  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const authenticationUser = async() => {
+      const token = localStorage.getItem('token')
+      if(!token){
+        dispatch(addUser({}))
+        setLoading(false);
+        return
+      }
+      try {
+        const res = await authUser(token)
+        dispatch(addUser(res.data))
+        // console.log(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+      setLoading(false)
+    }
+    authenticationUser()
+  }, [])
+
+
   return (
         <BrowserRouter>
           <PetShopLayout>

@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import AlertForm from "../Components/AlertForm/AlertForm";
 import { useGetUserLoginMutation } from "../features/user/userAPI";
 import { addUser } from "../features/user/userSlice";
 import imageBg from "/pexels-mq-huang-6782551.jpg";
 
 export default function LoginPage() {
+  const navigate = useNavigate()
   const [loginUser] = useGetUserLoginMutation() 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +33,7 @@ export default function LoginPage() {
         // setAlert({msg: res.data.data.msg, error: false})
         localStorage.setItem('token', res.data.token)
         dispatch(addUser(res.data))
+        navigate("/")
 
       }else{
         // console.log(res.error)
