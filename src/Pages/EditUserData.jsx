@@ -22,16 +22,18 @@ const EditUserData = () => {
     const [description, setDescription] = useState('')
 
     useEffect(() => {
-      setName(user.name ? user.name : '')
-      setEmail(user.email ? user.email : '')
-      setLastName(user.lastName ? user.lastName : '')
-      setCode(user.cp ? user.cp : '')
-      setStreecode(user.streetCode ? user.streetCode : '')
-      setDistrict(user.district ? user.district : '')
-      setPhone(user.phone ? user.phone : '')
-      setDni(user.dni ? user.dni : '')
-      setDescription(user.description ? user.description : '')
-    }, [])
+      if(user?._id){
+        setName(user.name)
+        setEmail(user.email)
+        setLastName(user.lastName)
+        setCode(user.cp)
+        setStreecode(user.streetCode)
+        setDistrict(user.district)
+        setPhone(user.phone)
+        setDni(user.dni)
+        setDescription(user.description)
+      }
+    }, [user])
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -85,7 +87,7 @@ const EditUserData = () => {
             onSubmit={handleSubmit} 
             className="flex flex-col gap-4 justify-center items-center w-full px-10">
           <input
-            value={user?.name ? user.name : name}
+            value={name}
             onChange={(e) => setName(e.target.value)}
             className="rounded-md py-2 pl-2 w-full"
             type="text"
@@ -93,7 +95,7 @@ const EditUserData = () => {
             placeholder="Nombre"
           />
           <input
-            value={user?.lastName ? user.lastName : lastName}
+            value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             className="rounded-md py-2 pl-2 w-full"
             type="text"
@@ -101,7 +103,7 @@ const EditUserData = () => {
             placeholder="Apellido"
           />
           <input
-            value={user?.email ? user.email : email}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
             type="text"
@@ -109,7 +111,7 @@ const EditUserData = () => {
             placeholder="Apellido"
           />
           <input
-            value={user?.cp ? user.cp : cp}
+            value={cp}
             onChange={(e) => setCode(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
             type="number"
@@ -117,7 +119,7 @@ const EditUserData = () => {
             placeholder="Codigo Postal"
           />
           <input
-            value={user?.streetCode ? user.streetCode : streetCode}
+            value={streetCode}
             onChange={(e) => setStreecode(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10" 
             type="text"
@@ -125,7 +127,7 @@ const EditUserData = () => {
             placeholder="Altura"
           />
           <input
-            value={user?.district ? user.district : district}
+            value={district}
             onChange={(e) => setDistrict(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
             type="text"
@@ -133,7 +135,7 @@ const EditUserData = () => {
             placeholder="Dirrecion"
           />
           <input
-            value={user?.phone ? user.phone : phone}
+            value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
             type="number"
@@ -141,7 +143,7 @@ const EditUserData = () => {
             placeholder="Nro de Telefono"
           />
           <input
-            value={user?.dni ? user.dni : dni}
+            value={dni}
             onChange={(e) => setDni(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
             type="number"
@@ -149,7 +151,7 @@ const EditUserData = () => {
             placeholder="Dni"
           />
           <textarea
-            value={user?.description ? user.description : description}
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
             type="text"
