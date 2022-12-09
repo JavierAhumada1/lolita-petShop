@@ -1,33 +1,73 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {Link as Linkrouter} from 'react-router-dom';
 import AlertForm from "../Components/AlertForm/AlertForm";
+import { useUpdateUserDataMutation } from "../features/user/userAPI";
+import { addUser } from "../features/user/userSlice";
 
 
 const EditUserData = () => {
+    const user = useSelector(state => state.user)
+    const dispatch = useDispatch()
+    const [updateUserData] = useUpdateUserDataMutation()
     const [alert, setAlert] = useState({});
     const [name, setName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('');
-    const [code, setCode] = useState('')
-    const [streecode, setStreecode] = useState('')
+    const [cp, setCode] = useState('')
+    const [streetCode, setStreecode] = useState('')
     const [district, setDistrict] = useState('')
     const [phone, setPhone] = useState('')
     const [dni, setDni] = useState('')
     const [description, setDescription] = useState('')
 
+    useEffect(() => {
+      if(user?._id){
+        setName(user.name)
+        setEmail(user.email)
+        setLastName(user.lastName)
+        setCode(user.cp)
+        setStreecode(user.streetCode)
+        setDistrict(user.district)
+        setPhone(user.phone)
+        setDni(user.dni)
+        setDescription(user.description)
+      }
+    }, [user])
+
     const handleSubmit = e => {
         e.preventDefault()
-        if([name, email, code, description, streecode, district, phone, dni].includes('')){
+        if([name, email, cp, streetCode, district, phone, dni, lastName].includes('')){
+          console.log('error');
             setAlert({
                 msg: 'Completa todos los campos',
                 error: true
             })
             return
         }
-        console.log('Mostrando data')
+        const data = {name, description, email, cp, streetCode, district, phone, dni, lastName, _id: user._id}
+        sendUpdateUser(data)
         setAlert({})
     }
 
-
+    const sendUpdateUser = async(dataUser) => {
+      // console.log(dataUser)
+      try {
+        const res = await updateUserData(dataUser)
+        // console.log(res)
+        if(res.data){
+          setAlert({msg: 'Datos actualizados', error: false})
+          dispatch(addUser(res.data))
+        }else {
+          setAlert({
+            msg: 'Hubo un error',
+            error: true
+          })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
     const {msg} = alert
 
   return (
@@ -55,6 +95,14 @@ const EditUserData = () => {
             placeholder="Nombre"
           />
           <input
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="rounded-md py-2 pl-2 w-full"
+            type="text"
+            id="lastName"
+            placeholder="Apellido"
+          />
+          <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
@@ -63,15 +111,15 @@ const EditUserData = () => {
             placeholder="Apellido"
           />
           <input
-            value={code}
+            value={cp}
             onChange={(e) => setCode(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
-            type="text"
+            type="number"
             id="cp"
             placeholder="Codigo Postal"
           />
           <input
-            value={streecode}
+            value={streetCode}
             onChange={(e) => setStreecode(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10" 
             type="text"
@@ -90,7 +138,7 @@ const EditUserData = () => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
-            type="text"
+            type="number"
             id="phone"
             placeholder="Nro de Telefono"
           />
@@ -98,7 +146,7 @@ const EditUserData = () => {
             value={dni}
             onChange={(e) => setDni(e.target.value)}
             className="rounded-md py-2 pl-2 items-center w-full px-10"
-            type="text"
+            type="number"
             id="dni"
             placeholder="Dni"
           />
