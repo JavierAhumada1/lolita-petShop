@@ -2,11 +2,12 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Fragment } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link as Linkrouter } from "react-router-dom";
+import { Link as Linkrouter, useNavigate } from "react-router-dom";
 import ProductsCategories from "./ProductsCategories";
 import { HiUser } from "react-icons/hi";
 import { IoCartOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../../features/user/userSlice";
 
 const navigation = [
   {
@@ -57,6 +58,14 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogOut = () => {
+    localStorage.removeItem('token')
+    dispatch(addUser({}))
+    navigate('/')
+  }
 
   return (
     <Disclosure as="nav" className="font-nunito bg-gray-800">
@@ -162,15 +171,15 @@ export default function Navbar() {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <Linkrouter
-                              href="#"
+                            <button
+                              onClick={() => handleLogOut()}
                               className={classNames(
                                 active ? "bg-orange" : "",
                                 "block px-4 py-2 text-base text-gray-700"
                               )}
                             >
                               Cerrar Sesión
-                            </Linkrouter>
+                            </button>
                           )}
                         </Menu.Item>
                       </Menu.Items>

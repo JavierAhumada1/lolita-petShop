@@ -6,7 +6,6 @@ const Order = ({order, setShowMore}) => {
 
   const handleClick = orderId => {
     setShowMore(true)
-    console.log(orderId)
   }
   return (
     <div className="bg-orange text-white flex w-[25rem] h-[7rem] justify-between items-center rounded-lg p-2">
