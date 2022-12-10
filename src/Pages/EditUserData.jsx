@@ -51,10 +51,8 @@ const EditUserData = () => {
     }
 
     const sendUpdateUser = async(dataUser) => {
-      // console.log(dataUser)
       try {
         const res = await updateUserData(dataUser)
-        // console.log(res)
         if(res.data){
           setAlert({msg: 'Datos actualizados', error: false})
           dispatch(addUser(res.data))

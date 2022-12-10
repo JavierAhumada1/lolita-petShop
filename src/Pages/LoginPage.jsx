@@ -33,6 +33,7 @@ export default function LoginPage() {
         // setAlert({msg: res.data.data.msg, error: false})
         localStorage.setItem('token', res.data.token)
         dispatch(addUser(res.data))
+        console.log(res.data)
         navigate("/")
 
       }else{
