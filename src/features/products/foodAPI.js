@@ -23,9 +23,9 @@ export const foodAPI = createApi({
             }),
             invalidatesTags: ['Food']
         }),
-        getProductsFood: builder.query({
-            query: () => ({
-                url: '/food',
+        getProductsFood: builder.mutation({
+            query: (name) => ({
+                url: `/food?name=${name}`,
                 method: 'GET',
             }),
             providesTags: ['Food']
@@ -42,6 +42,6 @@ export const foodAPI = createApi({
 export const {
     useCreateProductFoodMutation,
     useUpdateProductFoodMutation,
-    useGetProductsFoodQuery,
+    useGetProductsFoodMutation,
     useGetProductFoodQuery
 } = foodAPI
