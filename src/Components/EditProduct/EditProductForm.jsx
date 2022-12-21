@@ -1,17 +1,19 @@
+import React from "react";
 import { useState } from "react";
-import AlertForm from "../Components/AlertForm/AlertForm";
-import { useCreateProductFoodMutation } from "../features/products/foodAPI";
-import { uploadFile } from "../firebase/config";
+import AlertForm from "../AlertForm/AlertForm";
+import { useEffect } from "react";
 import { Bars } from "react-loader-spinner";
+import { uploadFile } from "../../firebase/config";
+import { useUpdateProductFoodMutation } from "../../features/products/foodAPI";
+import { useDispatch } from "react-redux";
+import { setReload } from "../../features/reload/reloadSlice";
 
-export default function AddProductPage() {
-  const [createProduct, { isLoading }] = useCreateProductFoodMutation();
-  //stados de firebase
-  const [file, setFile] = useState("");
+
+const EditProductForm = ({ dataProduct }) => {
+  const [file, setFile] = useState();
+  const [updateProductFood] = useUpdateProductFoodMutation()
   const [image, setImage] = useState("");
-
-  //stados del formulario
-  const [type, setType] = useState("");
+  const [type, setType] = useState();
   const [weight, setWeight] = useState("");
   const [age, setAge] = useState("");
   const [brand, setBrand] = useState("");
@@ -21,17 +23,49 @@ export default function AddProductPage() {
   const [name, setName] = useState("");
   const [alert, setAlert] = useState({});
   const [spinner, setSpinner] = useState(false);
+  const dispath = useDispatch()
+
+  useEffect(() => {
+    setType(dataProduct.type);
+    setWeight(dataProduct.weight?.$numberDecimal);
+    setAge(dataProduct.age);
+    setBrand(dataProduct.brand);
+    setDate(dataProduct.date);
+    setStock(dataProduct.stock);
+    setPrice(dataProduct.price);
+    setName(dataProduct.name);
+    setImage(dataProduct.image)
+  }, [dataProduct]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (
-      [type, weight, age, brand, date, stock, price, name, file].includes("")
+      [type, weight, age, brand, date, stock, price, name].includes("")
     ) {
       return setAlert({ msg: "Completa todos los campos", error: true });
     }
 
-    sendImageFb(file);
+    if(file) {
+      console.log('option 1')
+      sendImageFb(file);
+    }else{
+      console.log('option 2')
+      const newDataProduct = {
+        image,
+        type,
+        weight,
+        age,
+        brand,
+        date,
+        stock,
+        name,
+        price,
+        _id : dataProduct._id
+      }
+      console.log(newDataProduct);
+      updateProduct(newDataProduct)
+    }
     setSpinner(true);
   };
 
@@ -39,7 +73,7 @@ export default function AddProductPage() {
     try {
       const result = await uploadFile(fileImage);
       setImage(result);
-      const dataProduct = {
+      const newDataProduct = {
         image: result,
         type,
         weight,
@@ -49,19 +83,23 @@ export default function AddProductPage() {
         stock,
         name,
         price,
+        _id : dataProduct._id
       };
-      sendProduct(dataProduct);
+      // console.log(newDataProduct)
+      updateProduct(newDataProduct);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const sendProduct = async (dataProduct) => {
+  const updateProduct = async (data) => {
     try {
-      const res = await createProduct(dataProduct);
+      const res = await updateProductFood(data);
       if (res.data) {
+        console.log(res.data)
         setAlert({ msg: "Producto creado y agregado", error: false });
         setSpinner(false);
+        dispath(setReload())
       } else {
         setAlert({ msg: res.error.data.msg, error: true });
       }
@@ -71,6 +109,7 @@ export default function AddProductPage() {
   };
 
   const { msg } = alert;
+
   return (
     <div className="min-h-[72vh] flex flex-col justify-center items-center p-10">
       <form
@@ -80,6 +119,7 @@ export default function AddProductPage() {
         <input
           type="text"
           value={type}
+          id="tipo"
           placeholder="Tipo"
           onChange={(e) => setType(e.target.value)}
           className="rounded-md py-2 pl-2"
@@ -112,13 +152,13 @@ export default function AddProductPage() {
           onChange={(e) => setBrand(e.target.value)}
           className="rounded-md py-2 pl-2"
         />
-        {/* <input
+        <input
           type="date"
           value={date}
           placeholder="Fecha"
           onChange={(e) => setDate(e.target.value)}
           className="rounded-md py-2 pl-2"
-        /> */}
+        />
         <input
           type="number"
           value={stock}
@@ -136,7 +176,7 @@ export default function AddProductPage() {
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         <div className="flex items-center justify-center">
           <img
-            src={image ? `${image}` : null}
+            src={image}
             alt="imagen del producto"
             style={{ width: 100 }}
             className="justify-center items-center flex"
@@ -165,4 +205,6 @@ export default function AddProductPage() {
       {msg ? <AlertForm alert={alert} /> : null}
     </div>
   );
-}
+};
+
+export default EditProductForm;

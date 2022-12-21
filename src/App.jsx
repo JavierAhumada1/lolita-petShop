@@ -20,6 +20,7 @@ import SignupPage from './Pages/SignupPage';
 import VerificationPage from './Pages/VerificationPage';
 import FaqsPage from './Pages/FaqsPage';
 import { addUser } from './features/user/userSlice';
+import EditProduct from './Pages/EditProduct';
 
 export default function App() {
 
@@ -56,7 +57,8 @@ export default function App() {
               <Route path='/alimento-para-perros' element={<DogsPage />} />
               <Route path='/alimento-para-gatos' element={<CatsPage />} />
               <Route path='/accesorios-para-mascotas' element={<AccessoriesPage />} />
-              <Route path='/editar-producto/:id' element={<EditProductPage />} />
+              <Route path='/editar-producto/:id' element={<EditProduct/>} />
+              <Route path='/editar-producto' element={<EditProductPage />} />
               <Route path='/agregar-producto' element={<AddProductPage />} />
               <Route path='/carrito' element={<CartPage />} />
               <Route path='/iniciar-sesion' element={<LoginPage />} />
