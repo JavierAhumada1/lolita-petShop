@@ -15,21 +15,19 @@ const navigation = [
     href: "/",
     current: false,
   },
-  /* {
-        name: 'Gatos',
-        href: '#',
-        current: false,
-        icon: '',
-    },
-    {
-        name: 'Perros',
-        href: '#',
-        current: false,
-        icon: '',
-    }, */
   {
     name: "Contacto",
     href: "/contacto",
+    current: false,
+  },
+  {
+    name: "Perros",
+    href: "/alimento-para-perros",
+    current: false,
+  },
+  {
+    name: "Gatos",
+    href: "/alimento-para-gatos",
     current: false,
   },
 ];
@@ -71,21 +69,21 @@ export default function Navbar() {
     <Disclosure as="nav" className="font-nunito bg-gray-800">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="mx-auto max-w-7xl">
+            <div className="relative right-1 flex h-14 gap-6 items-center">
+              <div className="absolute inset-y-0 flex right-12 items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center bg-light-grey justify-center rounded-md text-gray-800 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white hover:bg-orange">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   ) : (
                     <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                {/* <div className="flex flex-shrink-0 items-center">
+                {/* <div className="flex flex-shrink-0 items-center"> // LOGO
                                     <img
                                         className="block h-8 w-auto lg:hidden"
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
@@ -99,7 +97,7 @@ export default function Navbar() {
                                 </div> */}
 
                 <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                  <div className="flex">
                     {navigation.map((item) => (
                       <Linkrouter
                         key={item.name}
@@ -118,14 +116,14 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <ProductsCategories animals="Perros" />
-              <ProductsCategories animals="Gatos" />
+              {/* <ProductsCategories animals="Perros"/> */}
+              {/* <ProductsCategories animals="Gatos" /> */}
               <Linkrouter to={"/carrito"}>
-                <IoCartOutline className="w-6 h-6 text-white hover:text-orange cursor-pointer" />
+                <IoCartOutline className="w-5 h-6 text-white hover:text-orange cursor-pointer" />
               </Linkrouter>
-              <div className="absolute inset-y-5 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-2 right-1 left-2">
+              <div className="absolute inset-y-0 lefth-1 flex items-center pr-2 sm:static md:inset-auto md:ml-6 md:pr-0">
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
+                <Menu as="div" className="ml-1">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
@@ -184,7 +182,7 @@ export default function Navbar() {
                         </Menu.Item>
                       </Menu.Items>
                     ) : (
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-46 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
                             <Linkrouter

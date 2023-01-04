@@ -4,8 +4,10 @@ export default function Contact() {
     return (
         <>
             <div className='font-nunito min-h-[70vh] bg-contact-img bg-cover bg-no-repeat'>
-                <h3 className="text-lg font-medium leading-6 font-nunito text-center py-4">Dejanos tu mensaje. Estaremos encantados de responderte.</h3>
-                <div className="md:grid md:grid-cols-3 md:gap-6 p-5">
+                <div className="md:grid md:grid-cols-5 md:gap-6 p-5 ">
+                    <div className='pt-10 flex flex-wrap'>
+                        <h3 className="text-lg font-medium font-nunito text-center">Dejanos tu mensaje. Estaremos encantados de responderte.</h3>
+                    </div>
                     <div className='mt-5 md:grid-cols-3 md:gap-6 flex justify-center my-5'>
                         <form className='w-96 text-base font-nunito rounded bg-green'>
                             <div className='p-2'>

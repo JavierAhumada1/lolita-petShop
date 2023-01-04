@@ -10,8 +10,8 @@ export default function Brands() {
     return (
         <>
             <div className="font-nunito flex flex-col py-5">
-                <h2 className='bg-black rounded-2xl text-white text-2xl font-bold uppercase self-center py-2 px-20'>Nuestras <span className="text-orange">marcas</span></h2>
-                <div className='flex justify-evenly pt-5'>
+                <h2 className='bg-black rounded-2xl text-white text-2xl font-bold uppercase py-2 self-center px-16 lg:px-20'>Nuestras <span className="text-orange">marcas</span></h2>
+                <div className='flex flex-wrap justify-center pt-5'>
                     {brands.map(brand => (
                         <img className="w-[10rem]" key={brand.id} src={brand.img} alt="brand"/>
                     ))}
